@@ -1,0 +1,321 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "ProcureMind AI architecture",
+    "subtitle": "Intake, document processing, matching, exceptions and approvals",
+    "output": "docs/architecture.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "users",
+      "type": "external",
+      "label": "Users",
+      "sublabel": "Browser",
+      "pos": [
+        40,
+        300
+      ],
+      "size": [
+        120,
+        60
+      ]
+    },
+    {
+      "id": "forwarder",
+      "type": "external",
+      "label": "Forwarding system",
+      "sublabel": "inbox key",
+      "pos": [
+        40,
+        440
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "web",
+      "type": "frontend",
+      "label": "Web UI",
+      "sublabel": "Next.js export, nginx",
+      "pos": [
+        250,
+        300
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "api",
+      "type": "backend",
+      "label": "API",
+      "sublabel": "FastAPI, sessions, roles",
+      "pos": [
+        460,
+        300
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "pgbouncer",
+      "type": "cloud",
+      "label": "PgBouncer",
+      "sublabel": "transaction pooling",
+      "pos": [
+        670,
+        300
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "db",
+      "type": "database",
+      "label": "PostgreSQL",
+      "sublabel": "16, row-level security",
+      "pos": [
+        880,
+        300
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "redis",
+      "type": "messagebus",
+      "label": "Redis",
+      "sublabel": "wake-ups, events, limits",
+      "pos": [
+        670,
+        120
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "pipeline",
+      "type": "backend",
+      "label": "Document worker",
+      "sublabel": "OCR, extract, match",
+      "pos": [
+        460,
+        440
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "agent",
+      "type": "backend",
+      "label": "Exception Agent",
+      "sublabel": "run loop, typed read tools",
+      "pos": [
+        670,
+        440
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "files",
+      "type": "database",
+      "label": "Files volume",
+      "sublabel": "originals, page images",
+      "pos": [
+        460,
+        580
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "llm",
+      "type": "cloud",
+      "label": "Model provider",
+      "sublabel": "optional",
+      "pos": [
+        1090,
+        440
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "otlp",
+      "type": "cloud",
+      "label": "OTLP collector",
+      "sublabel": "optional",
+      "pos": [
+        1090,
+        580
+      ],
+      "size": [
+        130,
+        60
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Docker Compose stack",
+      "wraps": [
+        "web",
+        "api",
+        "pgbouncer",
+        "db",
+        "redis",
+        "pipeline",
+        "agent",
+        "files"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "users-to-web",
+      "from": "users",
+      "to": "web",
+      "label": "HTTPS",
+      "variant": "emphasis"
+    },
+    {
+      "id": "web-to-api",
+      "from": "web",
+      "to": "api",
+      "label": "/api and /v1, cookie + CSRF",
+      "variant": "emphasis"
+    },
+    {
+      "id": "forwarder-to-api",
+      "from": "forwarder",
+      "to": "api",
+      "label": "POST /v1/inbox"
+    },
+    {
+      "id": "api-to-pgbouncer",
+      "from": "api",
+      "to": "pgbouncer",
+      "label": "SQL"
+    },
+    {
+      "id": "pgbouncer-to-db",
+      "from": "pgbouncer",
+      "to": "db",
+      "label": "pooled"
+    },
+    {
+      "id": "api-to-redis",
+      "from": "api",
+      "to": "redis",
+      "label": "limits, events",
+      "variant": "dashed"
+    },
+    {
+      "id": "api-to-files",
+      "from": "api",
+      "to": "files",
+      "label": "originals"
+    },
+    {
+      "id": "pipeline-to-pgbouncer",
+      "from": "pipeline",
+      "to": "pgbouncer",
+      "label": "claims, results"
+    },
+    {
+      "id": "pipeline-to-files",
+      "from": "pipeline",
+      "to": "files",
+      "label": "pages"
+    },
+    {
+      "id": "agent-to-pgbouncer",
+      "from": "agent",
+      "to": "pgbouncer",
+      "label": "runs, evidence"
+    },
+    {
+      "id": "agent-to-redis",
+      "from": "agent",
+      "to": "redis",
+      "label": "events, wake-ups",
+      "variant": "dashed"
+    },
+    {
+      "id": "pipeline-to-llm",
+      "from": "pipeline",
+      "to": "llm",
+      "label": "extract",
+      "variant": "dashed"
+    },
+    {
+      "id": "agent-to-llm",
+      "from": "agent",
+      "to": "llm",
+      "label": "investigate",
+      "variant": "dashed"
+    },
+    {
+      "id": "agent-to-otlp",
+      "from": "agent",
+      "to": "otlp",
+      "label": "spans, no content",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Request path",
+      "items": [
+        "E-mail and password sign-in, server-side session in an HttpOnly cookie",
+        "Role check on every route: viewer, clerk, approver, admin",
+        "Row-level security binds every query to the caller's organisation",
+        "Audit log of sign-ins, decisions and administrator changes"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Document pipeline",
+      "items": [
+        "Uploads are checked by content and stored by SHA-256",
+        "Digital PDFs use the text layer; scans use Tesseract OCR",
+        "Extraction stores a value only if it is found on the page",
+        "Matching and checks are deterministic and use no model"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "Exceptions and approvals",
+      "items": [
+        "A held invoice opens one exception for the agent",
+        "The agent reads through typed tools; it stores a recommendation and a draft only",
+        "A person accepts or decides; approval tiers and separation of duties apply",
+        "Nothing is paid by this system"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+Count,Message,Traceback,Nodes
+2,URL http://localhost:3300/api/auth/login: code=500,"  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/locust/user/users.py"", line 166, in run
+    self.on_start()
+    ~~~~~~~~~~~~~^^
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/load/locustfile.py"", line 27, in on_start
+    r.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~^^
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/locust/contrib/fasthttp.py"", line 530, in raise_for_status
+    raise error
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/locust/contrib/fasthttp.py"", line 313, in request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/locust/contrib/fasthttp.py"", line 530, in raise_for_status
+    raise error
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/locust/contrib/fasthttp.py"", line 179, in _send_request_safe_mode
+    return self.client.urlopen(url, method=method, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/geventhttpclient/useragent.py"", line 679, in urlopen
+    last_error = self._handle_error(e, url=req.url)
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/geventhttpclient/useragent.py"", line 556, in _handle_error
+    raise e.with_traceback(e.__traceback__)
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/geventhttpclient/useragent.py"", line 671, in urlopen
+    self._verify_status(resp.status_code, url=req.url)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/locust/contrib/fasthttp.py"", line 645, in _verify_status
+    raise LocustBadStatusCode(url, code=status_code)
+",local
+2,Expecting value: line 1 column 1 (char 0),"  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/locust/user/users.py"", line 166, in run
+    self.on_start()
+    ~~~~~~~~~~~~~^^
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/load/locustfile.py"", line 28, in on_start
+    listed = self.client.get(""/api/invoices?limit=100"", name=""GET /api/invoices"").json()[""invoices""]
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/locust/contrib/fasthttp.py"", line 525, in json
+    return json.loads(self.text)  # type: ignore
+           ~~~~~~~~~~^^^^^^^^^^^
+  File ""/home/rafiul/.local/share/uv/python/cpython-3.13.16-linux-x86_64-gnu/lib/python3.13/json/__init__.py"", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File ""/home/rafiul/.local/share/uv/python/cpython-3.13.16-linux-x86_64-gnu/lib/python3.13/json/decoder.py"", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/rafiul/.local/share/uv/python/cpython-3.13.16-linux-x86_64-gnu/lib/python3.13/json/decoder.py"", line 363, in raw_decode
+    raise JSONDecodeError(""Expecting value"", s, err.value) from None
+",local
+2,Expecting value: line 1 column 1 (char 0),"  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/locust/user/users.py"", line 166, in run
+    self.on_start()
+    ~~~~~~~~~~~~~^^
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/load/locustfile.py"", line 30, in on_start
+    self.orders = [o[""id""] for o in self.client.get(""/api/orders"", name=""GET /api/orders"").json()[""orders""][:100]]
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/locust/contrib/fasthttp.py"", line 525, in json
+    return json.loads(self.text)  # type: ignore
+           ~~~~~~~~~~^^^^^^^^^^^
+  File ""/home/rafiul/.local/share/uv/python/cpython-3.13.16-linux-x86_64-gnu/lib/python3.13/json/__init__.py"", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File ""/home/rafiul/.local/share/uv/python/cpython-3.13.16-linux-x86_64-gnu/lib/python3.13/json/decoder.py"", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/rafiul/.local/share/uv/python/cpython-3.13.16-linux-x86_64-gnu/lib/python3.13/json/decoder.py"", line 363, in raw_decode
+    raise JSONDecodeError(""Expecting value"", s, err.value) from None
+",local
+1,"URL http://localhost:3300/api/auth/login: 0, original=timed out","  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/locust/user/users.py"", line 166, in run
+    self.on_start()
+    ~~~~~~~~~~~~~^^
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/load/locustfile.py"", line 27, in on_start
+    r.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~^^
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/locust/contrib/fasthttp.py"", line 611, in raise_for_status
+    raise self.error
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/locust/contrib/fasthttp.py"", line 313, in request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/locust/contrib/fasthttp.py"", line 611, in raise_for_status
+    raise self.error
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/locust/contrib/fasthttp.py"", line 179, in _send_request_safe_mode
+    return self.client.urlopen(url, method=method, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/geventhttpclient/useragent.py"", line 658, in urlopen
+    raise self._handle_retries_exceeded(url, last_error=last_error)
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/rafiul/Desktop/Rafiul/New_Project/procuremind/backend/.venv/lib/python3.13/site-packages/geventhttpclient/useragent.py"", line 562, in _handle_retries_exceeded
+    raise RetriesExceeded(url, self.max_retries, original=last_error)
+",local

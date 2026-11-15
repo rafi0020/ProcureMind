@@ -1,0 +1,10 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+GET,GET /api/exceptions,LocustBadStatusCode(code=500),5,2026-11-14T14:44:39Z,2026-11-14T14:44:51Z
+POST,POST /api/auth/login,"RetriesExceeded('http://localhost:3300/api/auth/login', 0, original=timed out)",1,2026-11-14T14:44:42Z,2026-11-14T14:44:42Z
+GET,GET /api/invoices,LocustBadStatusCode(code=500),5,2026-11-14T14:44:11Z,2026-11-14T14:45:05Z
+GET,GET /api/orders,LocustBadStatusCode(code=500),2,2026-11-14T14:44:40Z,2026-11-14T14:44:58Z
+GET,GET /api/ap-approvals,LocustBadStatusCode(code=500),2,2026-11-14T14:44:46Z,2026-11-14T14:45:01Z
+GET,GET /api/orders/{id},LocustBadStatusCode(code=500),1,2026-11-14T14:44:54Z,2026-11-14T14:44:54Z
+GET,GET /api/invoices/{id}/match,LocustBadStatusCode(code=404),7,2026-11-14T14:44:28Z,2026-11-14T14:45:27Z
+GET,GET /api/invoices/{id},LocustBadStatusCode(code=500),1,2026-11-14T14:44:54Z,2026-11-14T14:44:54Z
+POST,POST /api/auth/login,LocustBadStatusCode(code=500),2,2026-11-14T14:44:10Z,2026-11-14T14:44:31Z

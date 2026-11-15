@@ -1,0 +1,129 @@
+/* Tokens. Warm stone on light by default; a dark stone theme is kept for people who choose it.
+   Every colour, face and radius used by the screens is defined here and nowhere else. */
+:root {
+  color-scheme: light;
+  --font-ui: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Spline Sans Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Ground and surfaces */
+  --ground: oklch(96.4% 0.007 85);      /* the app's floor: a warm stone */
+  --surface: oklch(99% 0.004 85);       /* panes, panels, the top bar */
+  --surface-2: oklch(97.4% 0.006 85);   /* hover, inputs, quiet wells */
+  --sheet: oklch(99.8% 0.004 85);       /* the raised document page */
+  --shadow-sheet: 0 1px 1px oklch(30% 0.02 70 / 0.08), 0 16px 32px -20px oklch(30% 0.03 70 / 0.40);
+  --shadow-float: 0 10px 24px -12px oklch(20% 0.02 70 / 0.5);
+  --shade: oklch(25% 0.02 70 / 0.25);
+  /* ink on the paper of a specimen or a document, whatever the desk colour */
+  --paper-ink: oklch(28% 0.012 70);
+  --paper-muted: oklch(44% 0.012 70);
+  --paper-rule: oklch(90% 0.006 80);
+  --paper-green: oklch(33% 0.07 155);
+  --paper-green-soft: oklch(93% 0.035 155);
+  --paper-amber: oklch(72% 0.14 75);
+  --paper-amber-soft: oklch(90% 0.06 80);
+  --paper-tag: oklch(28% 0.012 70);
+  --paper-tag-ink: oklch(98% 0.004 85);
+  --paper-ink-2: oklch(34% 0.012 70);
+  --paper-rule-2: oklch(82% 0.008 80);
+  --paper-surface: oklch(99.8% 0.004 85);
+  --paper-surface-2: oklch(96.5% 0.006 85);
+  --paper-green-hi: oklch(28% 0.07 155);
+  --paper-green-ink: oklch(99% 0.004 155);
+  --paper-amber-text: oklch(38% 0.09 60);
+  --paper-red-soft: oklch(95.5% 0.03 25);
+  --paper-red-text: oklch(42% 0.15 27);
+
+  /* Ink */
+  --ink: oklch(24% 0.012 70);
+  --ink-2: oklch(38% 0.012 70);
+  --muted: oklch(46% 0.012 70);
+  --rule: oklch(89% 0.008 80);
+  --rule-2: oklch(79% 0.010 80);
+
+  /* Forest green: actions and "matched". Used as a fill only for the one primary action on a screen. */
+  --accent: oklch(41% 0.085 155);
+  --accent-hi: oklch(35% 0.085 155);
+  --accent-ink: oklch(99% 0.004 155);
+  --accent-text: oklch(39% 0.085 155);
+  --accent-soft: oklch(94% 0.035 155);
+  --green-text: oklch(33% 0.07 155);
+
+  /* Amber: open, waiting, needs a person. Red: exceptions and failures. */
+  --amber: oklch(78% 0.15 75);
+  --amber-soft: oklch(95% 0.05 80);
+  --amber-text: oklch(38% 0.09 60);
+  --red: oklch(50% 0.17 27);
+  --red-soft: oklch(95.5% 0.03 25);
+  --red-text: oklch(42% 0.15 27);
+
+  --focus: oklch(48% 0.12 155);
+  --highlight: oklch(80% 0.14 80);      /* the box drawn on a read field */
+  --chart-2: oklch(63% 0.13 65);        /* chart series: green, ochre, stone */
+  --chart-3: oklch(54% 0.02 70);
+
+  /* Shape and size */
+  --radius: 8px;
+  --radius-sm: 6px;
+  --control: 36px;
+  --control-sm: 30px;
+  --topbar-h: 56px;
+  --row-h: 42px;
+  --page-max: 1200px;
+  --gutter: 32px;
+  --dur: 140ms;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal: 400;
+  --z-toast: 500;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* Spacing scale (4px base) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-14: 56px;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ground: oklch(19.5% 0.008 70);
+  --surface: oklch(23.5% 0.009 70);
+  --surface-2: oklch(27% 0.009 70);
+  --sheet: oklch(96% 0.006 85);         /* a document is still paper, even on a dark desk */
+  --shadow-sheet: 0 1px 1px oklch(0% 0 0 / 0.4), 0 18px 36px -20px oklch(0% 0 0 / 0.7);
+  --shadow-float: 0 10px 24px -12px oklch(0% 0 0 / 0.6);
+  --shade: oklch(5% 0 0 / 0.5);
+  --ink: oklch(93.5% 0.008 80);
+  --ink-2: oklch(83% 0.01 80);
+  --muted: oklch(71% 0.012 75);
+  --rule: oklch(33% 0.009 70);
+  --rule-2: oklch(42% 0.01 70);
+  --accent: oklch(74% 0.12 155);
+  --accent-hi: oklch(80% 0.11 155);
+  --accent-ink: oklch(20% 0.02 155);
+  --accent-text: oklch(80% 0.11 155);
+  --accent-soft: oklch(30% 0.05 155);
+  --green-text: oklch(86% 0.09 155);
+  --amber: oklch(80% 0.13 75);
+  --amber-soft: oklch(31% 0.05 75);
+  --amber-text: oklch(88% 0.1 80);
+  --red: oklch(72% 0.15 25);
+  --red-soft: oklch(30% 0.06 25);
+  --red-text: oklch(84% 0.1 25);
+  --focus: oklch(80% 0.11 155);
+  --highlight: oklch(84% 0.13 80);
+  --chart-2: oklch(78% 0.13 75);
+  --chart-3: oklch(70% 0.015 75);
+}
+
+@media (max-width: 64rem) {
+  :root { --gutter: 24px; }
+}
+@media (max-width: 40rem) {
+  :root { --gutter: 16px; --control: 40px; }
+}

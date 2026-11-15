@@ -1,0 +1,216 @@
+{
+ "name": "test-cc-claude-sonnet-5-5",
+ "model": "cc/claude-sonnet-5-5",
+ "split": "test",
+ "n": 9,
+ "at": "2026-11-14T17:13:59+00:00",
+ "metrics": {
+  "pass_rate": 1.0,
+  "outcome_accuracy": 1.0,
+  "cite_rate": 1.0,
+  "completed_rate": 1.0,
+  "unsupported_numbers_per_report": 0.667,
+  "mean_steps": 7,
+  "mean_cost_usd": 0.0746,
+  "p50_latency_s": 22.3,
+  "p95_latency_s": 27.9
+ },
+ "by_kind": {
+  "price_over_tolerance": {
+   "n": 2,
+   "passed": 2
+  },
+  "quantity_over_received": {
+   "n": 1,
+   "passed": 1
+  },
+  "duplicate_number": {
+   "n": 1,
+   "passed": 1
+  },
+  "bank_changed": {
+   "n": 1,
+   "passed": 1
+  },
+  "no_po": {
+   "n": 1,
+   "passed": 1
+  },
+  "line_unmatched": {
+   "n": 1,
+   "passed": 1
+  },
+  "currency_mismatch": {
+   "n": 1,
+   "passed": 1
+  },
+  "split_under_threshold": {
+   "n": 1,
+   "passed": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "price_over_tolerance-3",
+   "kind": "price_over_tolerance",
+   "outcome": "request_credit_note",
+   "outcome_ok": true,
+   "cited": true,
+   "passed": true,
+   "reason": "recommended request_credit_note, stated the 5.00% price variance",
+   "status": "completed",
+   "steps": 7,
+   "tokens": 16163,
+   "cost_usd": 0.072405,
+   "latency_s": 23.9,
+   "unsupported": 0,
+   "tool_errors": 0,
+   "run_id": "02911fe1-b4a2-4047-aa01-d7721971df4b",
+   "summary": "Recommend request_credit_note. Invoice INV-E0002 bills GL-120 at 23.1 per unit. PO-E0002 price is 22.0. That is 5.0% over, tolerance 2.0%. Overcharge 11.0 on 10 units. All 10 units received (GRN-E0002), none invoiced before. PO has 0 changes, so no agreed price rise. Bank account US02EVAL0000000002 matches the one account on file. No resolved price_over_tolerance cases and no vendor price history,"
+  },
+  {
+   "id": "price_over_tolerance-6",
+   "kind": "price_over_tolerance",
+   "outcome": "request_credit_note",
+   "outcome_ok": true,
+   "cited": true,
+   "passed": true,
+   "reason": "recommended request_credit_note, stated the 12.00% price variance",
+   "status": "completed",
+   "steps": 7,
+   "tokens": 16042,
+   "cost_usd": 0.07053,
+   "latency_s": 23.3,
+   "unsupported": 0,
+   "tool_errors": 0,
+   "run_id": "d31d9248-5cfa-4934-ab92-3a94b38f7200",
+   "summary": "Outcome: request_credit_note. Invoice INV-E0005 bills TN-505 toner at 28 per unit. PO-E0005 says 25. That is 12.00% over, tolerance 2.00%. Qty fine: 10 ordered, 10 received, 0 invoiced before. Overbilled 30.0 before tax. PO has no changes to explain price. Bank account on invoice matches the one on file. No vendor price history and no resolved price_over_tolerance cases, so no precedent to accept."
+  },
+  {
+   "id": "quantity_over_received-3",
+   "kind": "quantity_over_received",
+   "outcome": "hold",
+   "outcome_ok": true,
+   "cited": true,
+   "passed": true,
+   "reason": "recommended hold, stated the 9 received",
+   "status": "completed",
+   "steps": 6,
+   "tokens": 14027,
+   "cost_usd": 0.064401,
+   "latency_s": 22.3,
+   "unsupported": 0,
+   "tool_errors": 0,
+   "run_id": "6c17fc21-bfed-4880-9edd-a40248093b4b",
+   "summary": "Outcome: hold. Invoice INV-E0008 bills 12 units of ST-210, but only 9 received (GRN-E0008). PO-E0008 ordered 12, still open. Price 28.0 match PO, variance 0.0. Bank account US08EVAL0000000008 match account on file. Only quantity wrong. Remaining 3 units may still arrive, so hold until received or supplier confirms shipment. If 3 never arrive, request corrected invoice or credit note. No prior reso"
+  },
+  {
+   "id": "duplicate_number-3",
+   "kind": "duplicate_number",
+   "outcome": "reject_duplicate",
+   "outcome_ok": true,
+   "cited": true,
+   "passed": true,
+   "reason": "recommended reject_duplicate, stated the total 352.00 already invoiced",
+   "status": "completed",
+   "steps": 7,
+   "tokens": 15899,
+   "cost_usd": 0.068457,
+   "latency_s": 17.5,
+   "unsupported": 0,
+   "tool_errors": 1,
+   "run_id": "9ba0b84c-e679-4daa-a5ba-69ede3ba762d",
+   "summary": "Outcome: reject_duplicate. Invoice \"No. 42\" (352.0 USD, dated 2026-11-10) duplicates INV-0042 from same vendor, already approved (352.0, dated 2026-10-29). Both bill 10 units CO-870 at 32.0 on PO-E0012. Same bank account US12EVAL0000000012 on both. Line compare shows 10 units previously invoiced and 10 invoiced now, against 100 ordered and 100 received. Price matches PO, no price variance. Based o"
+  },
+  {
+   "id": "bank_changed-3",
+   "kind": "bank_changed",
+   "outcome": "hold",
+   "outcome_ok": true,
+   "cited": null,
+   "passed": true,
+   "reason": "recommended hold",
+   "status": "completed",
+   "steps": 6,
+   "tokens": 13761,
+   "cost_usd": 0.060375,
+   "latency_s": 15.6,
+   "unsupported": 0,
+   "tool_errors": 0,
+   "run_id": "f4309ff1-4614-4995-8c9c-30016e77cb84",
+   "summary": "Outcome: hold. Invoice INV-E0016 (316.8 USD) names account GB16NEWB00000000000016. Only account on file is US16EVAL0000000016. Both end 0016, so finding detail text wrongly says \"matches\"; full numbers differ. Bank account changed. Three-way match is clean: 8 ordered, 8 received, 8 invoiced at 36.0, price difference 0.0. No earlier resolved bank_changed cases to compare. Vendor history shows only "
+  },
+  {
+   "id": "no_po-3",
+   "kind": "no_po",
+   "outcome": "hold",
+   "outcome_ok": true,
+   "cited": null,
+   "passed": true,
+   "reason": "recommended hold",
+   "status": "completed",
+   "steps": 7,
+   "tokens": 16232,
+   "cost_usd": 0.073416,
+   "latency_s": 19.9,
+   "unsupported": 2,
+   "tool_errors": 3,
+   "run_id": "13b2b1f2-5cb1-43b6-86cb-c325c5319f83",
+   "summary": "Outcome: hold. Invoice INV-E0020 (Albany Fasteners No 20, total 132.0 USD) cites PO-X0020. No such PO exists in this organisation, so no PO lines or receipts to match. Bank account US20EVAL0000000020 matches the one account on file. No price history and no resolved no_po precedent. Coffee beans from a fasteners vendor look odd; records cannot explain it. No invoice document page available. Next: b"
+  },
+  {
+   "id": "line_unmatched-3",
+   "kind": "line_unmatched",
+   "outcome": "request_corrected_invoice",
+   "outcome_ok": true,
+   "cited": null,
+   "passed": true,
+   "reason": "recommended request_corrected_invoice",
+   "status": "completed",
+   "steps": 9,
+   "tokens": 21417,
+   "cost_usd": 0.103155,
+   "latency_s": 27.9,
+   "unsupported": 2,
+   "tool_errors": 2,
+   "run_id": "fe024537-d9eb-4413-ab4e-84e1cd0a2388",
+   "summary": "Outcome: request_corrected_invoice. PO-E0023 has only FL-720 Floor cleaner 5L. GRN-E0023 received only FL-720. Billed item not ordered, not received. Line quantity and unit price match the PO line, so supplier likely put wrong item on invoice. Records cannot confirm what supplier intended. Bank account matches the active account on file. No resolved line_unmatched exceptions exist for precedent. B"
+  },
+  {
+   "id": "currency_mismatch-3",
+   "kind": "currency_mismatch",
+   "outcome": "hold",
+   "outcome_ok": true,
+   "cited": null,
+   "passed": true,
+   "reason": "recommended hold",
+   "status": "completed",
+   "steps": 6,
+   "tokens": 14140,
+   "cost_usd": 0.066084,
+   "latency_s": 18.1,
+   "unsupported": 0,
+   "tool_errors": 0,
+   "run_id": "aab6a2d0-1901-4217-84f1-0e10e40ea2ea",
+   "summary": "Outcome: hold. Invoice INV-E0026 is in CAD, PO-E0026 in USD. Quantity (10), unit price (46.0) and receipt GRN-E0026 (10 received) all match. Total 506.0 (subtotal 460.0 + tax 46.0). Same numbers in both currencies, so records cannot show whether the supplier mislabeled currency or the PO currency is wrong. Bank account matches the one active account on file. No prior resolved currency_mismatch cas"
+  },
+  {
+   "id": "split_under_threshold-3",
+   "kind": "split_under_threshold",
+   "outcome": "escalate",
+   "outcome_ok": true,
+   "cited": true,
+   "passed": true,
+   "reason": "recommended escalate, stated the 1,000 approval limit",
+   "status": "completed",
+   "steps": 8,
+   "tokens": 19080,
+   "cost_usd": 0.092136,
+   "latency_s": 26.0,
+   "unsupported": 2,
+   "tool_errors": 2,
+   "run_id": "4ad8f512-c99a-41bd-b468-adbd357dcfc7",
+   "summary": "Outcome: escalate. Invoice INV-E0029-3 passes three-way match. PO-E0029 ordered 30 toner cartridges, GRN-E0029 received 30, 20 billed earlier plus 10 now, price 87.27 equals PO, variance 0.0%. Not a true duplicate: each invoice bills different units, though the amount is the same. Problem is pattern. Fits split to avoid approval. Bank account matches on file and on all invoices, so no bank change."
+  }
+ ]
+}

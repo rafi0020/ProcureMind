@@ -1,0 +1,307 @@
+[
+ {
+  "id": "price_over_tolerance-1",
+  "kind": "price_over_tolerance",
+  "exception_id": "06704207-be80-45c2-99a8-1a59cc0a6fe5",
+  "acceptable": [
+   "request_credit_note",
+   "hold"
+  ],
+  "cite": {
+   "value": 3.0,
+   "what": "the 3.00% price variance"
+  },
+  "codes": [
+   "price_over_tolerance"
+  ]
+ },
+ {
+  "id": "price_over_tolerance-2",
+  "kind": "price_over_tolerance",
+  "exception_id": "b9fab6d8-13c6-48a1-bd12-8ac7694c03e9",
+  "acceptable": [
+   "request_credit_note",
+   "hold"
+  ],
+  "cite": {
+   "value": 4.48,
+   "what": "the 4.48% price variance"
+  },
+  "codes": [
+   "price_over_tolerance"
+  ]
+ },
+ {
+  "id": "price_over_tolerance-4",
+  "kind": "price_over_tolerance",
+  "exception_id": "8097d0a7-b7cd-4ecb-87ff-5487b52bafe4",
+  "acceptable": [
+   "request_credit_note",
+   "hold"
+  ],
+  "cite": {
+   "value": 7.0,
+   "what": "the 7.00% price variance"
+  },
+  "codes": [
+   "price_over_tolerance"
+  ]
+ },
+ {
+  "id": "price_over_tolerance-5",
+  "kind": "price_over_tolerance",
+  "exception_id": "ddfbe406-6fa9-4b75-8617-9149de6805d6",
+  "acceptable": [
+   "request_credit_note",
+   "hold"
+  ],
+  "cite": {
+   "value": 9.0,
+   "what": "the 9.00% price variance"
+  },
+  "codes": [
+   "price_over_tolerance"
+  ]
+ },
+ {
+  "id": "quantity_over_received-1",
+  "kind": "quantity_over_received",
+  "exception_id": "9c8252c6-0a4b-4f85-822a-3d98b3b8b0b3",
+  "acceptable": [
+   "hold"
+  ],
+  "cite": {
+   "value": 6.0,
+   "what": "the 6 received"
+  },
+  "codes": [
+   "quantity_over_received"
+  ]
+ },
+ {
+  "id": "quantity_over_received-2",
+  "kind": "quantity_over_received",
+  "exception_id": "60331ef3-60fe-43b5-9b94-796063d1dca3",
+  "acceptable": [
+   "hold"
+  ],
+  "cite": {
+   "value": 25.0,
+   "what": "the 25 received"
+  },
+  "codes": [
+   "quantity_over_received"
+  ]
+ },
+ {
+  "id": "quantity_over_received-4",
+  "kind": "quantity_over_received",
+  "exception_id": "1efd12ec-0c22-49bc-962a-b3a29fd8ba84",
+  "acceptable": [
+   "hold"
+  ],
+  "cite": {
+   "value": 60.0,
+   "what": "the 60 received"
+  },
+  "codes": [
+   "quantity_over_received"
+  ]
+ },
+ {
+  "id": "duplicate_number-1",
+  "kind": "duplicate_number",
+  "exception_id": "5433b3dc-a3b1-48b0-b992-c7ea4f34992f",
+  "acceptable": [
+   "reject_duplicate"
+  ],
+  "cite": {
+   "value": 330.0,
+   "what": "the total 330.00 already invoiced"
+  },
+  "codes": [
+   "duplicate_number"
+  ]
+ },
+ {
+  "id": "duplicate_number-2",
+  "kind": "duplicate_number",
+  "exception_id": "206a3ff3-a6bc-48bd-b83f-d20b30313a56",
+  "acceptable": [
+   "reject_duplicate"
+  ],
+  "cite": {
+   "value": 341.0,
+   "what": "the total 341.00 already invoiced"
+  },
+  "codes": [
+   "duplicate_number"
+  ]
+ },
+ {
+  "id": "duplicate_number-4",
+  "kind": "duplicate_number",
+  "exception_id": "a14be1e9-2edf-4680-bfdd-c8722f213c69",
+  "acceptable": [
+   "reject_duplicate"
+  ],
+  "cite": {
+   "value": 363.0,
+   "what": "the total 363.00 already invoiced"
+  },
+  "codes": [
+   "duplicate_number"
+  ]
+ },
+ {
+  "id": "bank_changed-1",
+  "kind": "bank_changed",
+  "exception_id": "0325f5bc-eb7e-4f1d-b822-3bf5908dec84",
+  "acceptable": [
+   "hold",
+   "escalate"
+  ],
+  "cite": null,
+  "codes": [
+   "bank_changed"
+  ]
+ },
+ {
+  "id": "bank_changed-2",
+  "kind": "bank_changed",
+  "exception_id": "1d400883-2da2-45b8-91d3-f051450b135d",
+  "acceptable": [
+   "hold",
+   "escalate"
+  ],
+  "cite": null,
+  "codes": [
+   "bank_changed"
+  ]
+ },
+ {
+  "id": "bank_changed-4",
+  "kind": "bank_changed",
+  "exception_id": "5dda2276-aeb8-4474-ac0c-26cd8eb9bff1",
+  "acceptable": [
+   "hold",
+   "escalate"
+  ],
+  "cite": null,
+  "codes": [
+   "bank_changed"
+  ]
+ },
+ {
+  "id": "no_po-1",
+  "kind": "no_po",
+  "exception_id": "38ef63b4-ead8-488c-a972-6618433417b0",
+  "acceptable": [
+   "hold",
+   "request_corrected_invoice"
+  ],
+  "cite": null,
+  "codes": [
+   "no_po"
+  ]
+ },
+ {
+  "id": "no_po-2",
+  "kind": "no_po",
+  "exception_id": "bc0cfc15-407b-438f-b3f1-da0bbcc3605c",
+  "acceptable": [
+   "hold",
+   "request_corrected_invoice"
+  ],
+  "cite": null,
+  "codes": [
+   "no_po"
+  ]
+ },
+ {
+  "id": "line_unmatched-1",
+  "kind": "line_unmatched",
+  "exception_id": "3deb0503-16c1-4025-bbe8-cbc9aed52a6a",
+  "acceptable": [
+   "request_corrected_invoice",
+   "hold"
+  ],
+  "cite": null,
+  "codes": [
+   "line_unmatched"
+  ]
+ },
+ {
+  "id": "line_unmatched-2",
+  "kind": "line_unmatched",
+  "exception_id": "1fb6b7e9-7f8e-4416-ab4e-7a69dcd8725c",
+  "acceptable": [
+   "request_corrected_invoice",
+   "hold"
+  ],
+  "cite": null,
+  "codes": [
+   "line_unmatched"
+  ]
+ },
+ {
+  "id": "currency_mismatch-1",
+  "kind": "currency_mismatch",
+  "exception_id": "a2990621-e2b2-4854-9089-727246eb047d",
+  "acceptable": [
+   "request_corrected_invoice",
+   "hold"
+  ],
+  "cite": null,
+  "codes": [
+   "currency_mismatch"
+  ]
+ },
+ {
+  "id": "currency_mismatch-2",
+  "kind": "currency_mismatch",
+  "exception_id": "69c53a35-ea60-4132-a72c-fa4c02d6dcf1",
+  "acceptable": [
+   "request_corrected_invoice",
+   "hold"
+  ],
+  "cite": null,
+  "codes": [
+   "currency_mismatch"
+  ]
+ },
+ {
+  "id": "split_under_threshold-1",
+  "kind": "split_under_threshold",
+  "exception_id": "5663cc59-b8c7-4459-af2b-f8f0781e50d1",
+  "acceptable": [
+   "escalate",
+   "hold"
+  ],
+  "cite": {
+   "value": 1000.0,
+   "what": "the 1,000 approval limit"
+  },
+  "codes": [
+   "duplicate_amount",
+   "split_under_threshold"
+  ]
+ },
+ {
+  "id": "split_under_threshold-2",
+  "kind": "split_under_threshold",
+  "exception_id": "db1e827e-4ef1-4e99-87e3-92bda38bcf65",
+  "acceptable": [
+   "escalate",
+   "hold"
+  ],
+  "cite": {
+   "value": 1000.0,
+   "what": "the 1,000 approval limit"
+  },
+  "codes": [
+   "duplicate_amount",
+   "split_under_threshold"
+  ]
+ }
+]

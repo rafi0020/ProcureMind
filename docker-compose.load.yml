@@ -1,0 +1,29 @@
+# Overrides for load measurement only:
+#   sh backend/load/create_load_db.sh            # once: a separate database, so the demo data is untouched
+#   docker compose -f docker-compose.yml -f docker-compose.load.yml up -d --build --scale api=4 --scale worker=1
+# Everything points at database procuremind_load and Redis database 2. The model is the built-in script, and the
+# limits that protect a real deployment from one noisy user or organisation are lifted, so the test measures
+# the system rather than its own throttles.
+x-load-env: &load-env
+  DATABASE_URL: postgresql+psycopg://procuremind_app:procuremind_app@pgbouncer:6432/procuremind_load
+  DATABASE_URL_OWNER: postgresql+psycopg://procuremind_owner:procuremind_owner@db:5432/procuremind_load
+  REDIS_URL: redis://redis:6379/2
+  SEED_DEMO: "false"
+  LLM_PROVIDER: stub
+  LOGIN_ATTEMPTS_PER_MINUTE: "1000000"
+  LOGIN_IP_PER_MINUTE: "1000000"
+  RUNS_PER_MINUTE: "1000000"
+  ORG_MAX_CONCURRENT_RUNS: "1000"
+  ORG_MAX_QUEUED_RUNS: "100000"
+  ORG_DAILY_COST_USD: "1000000"
+  SCRYPT_N: "4096"          # cheaper password hashing, so thousands of simulated sign-ins do not dominate
+  LOG_LEVEL: WARNING
+
+services:
+  migrate:
+    environment: *load-env
+  api:
+    environment: *load-env
+    ports: !reset []         # no fixed host port, so the service can be scaled; reach it through the web container
+  worker:
+    environment: *load-env

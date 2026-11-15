@@ -1,0 +1,133 @@
+[
+ {
+  "id": "price_over_tolerance-3",
+  "kind": "price_over_tolerance",
+  "exception_id": "70a1cf35-e689-4b0f-99fc-84150892f65d",
+  "acceptable": [
+   "request_credit_note",
+   "hold"
+  ],
+  "cite": {
+   "value": 5.0,
+   "what": "the 5.00% price variance"
+  },
+  "codes": [
+   "price_over_tolerance"
+  ]
+ },
+ {
+  "id": "price_over_tolerance-6",
+  "kind": "price_over_tolerance",
+  "exception_id": "7d63ea8c-b5f5-4e08-a64e-c71c3a170fb0",
+  "acceptable": [
+   "request_credit_note",
+   "hold"
+  ],
+  "cite": {
+   "value": 12.0,
+   "what": "the 12.00% price variance"
+  },
+  "codes": [
+   "price_over_tolerance"
+  ]
+ },
+ {
+  "id": "quantity_over_received-3",
+  "kind": "quantity_over_received",
+  "exception_id": "41007a02-c011-4a08-86f8-03dd183b88f4",
+  "acceptable": [
+   "hold"
+  ],
+  "cite": {
+   "value": 9.0,
+   "what": "the 9 received"
+  },
+  "codes": [
+   "quantity_over_received"
+  ]
+ },
+ {
+  "id": "duplicate_number-3",
+  "kind": "duplicate_number",
+  "exception_id": "dff1bea1-1723-4e10-9878-1fa117ec2453",
+  "acceptable": [
+   "reject_duplicate"
+  ],
+  "cite": {
+   "value": 352.0,
+   "what": "the total 352.00 already invoiced"
+  },
+  "codes": [
+   "duplicate_number"
+  ]
+ },
+ {
+  "id": "bank_changed-3",
+  "kind": "bank_changed",
+  "exception_id": "c9d853ba-8529-4393-b1c5-f989f3ce7c2c",
+  "acceptable": [
+   "hold",
+   "escalate"
+  ],
+  "cite": null,
+  "codes": [
+   "bank_changed"
+  ]
+ },
+ {
+  "id": "no_po-3",
+  "kind": "no_po",
+  "exception_id": "0e5d5372-31fd-432c-a3fb-b81e6ce87516",
+  "acceptable": [
+   "hold",
+   "request_corrected_invoice"
+  ],
+  "cite": null,
+  "codes": [
+   "no_po"
+  ]
+ },
+ {
+  "id": "line_unmatched-3",
+  "kind": "line_unmatched",
+  "exception_id": "97550dea-0fb8-4d55-9e65-ffb3373977d3",
+  "acceptable": [
+   "request_corrected_invoice",
+   "hold"
+  ],
+  "cite": null,
+  "codes": [
+   "line_unmatched"
+  ]
+ },
+ {
+  "id": "currency_mismatch-3",
+  "kind": "currency_mismatch",
+  "exception_id": "50719984-8008-4eae-b6a5-4474c2e75bf9",
+  "acceptable": [
+   "request_corrected_invoice",
+   "hold"
+  ],
+  "cite": null,
+  "codes": [
+   "currency_mismatch"
+  ]
+ },
+ {
+  "id": "split_under_threshold-3",
+  "kind": "split_under_threshold",
+  "exception_id": "63c8c662-c150-4c23-abb8-b11c98ecde90",
+  "acceptable": [
+   "escalate",
+   "hold"
+  ],
+  "cite": {
+   "value": 1000.0,
+   "what": "the 1,000 approval limit"
+  },
+  "codes": [
+   "duplicate_amount",
+   "split_under_threshold"
+  ]
+ }
+]

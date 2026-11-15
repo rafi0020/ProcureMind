@@ -1,0 +1,24 @@
+{
+ "note": "First recorded results, 2026-11-14; re-run after the final review's fix pass with the same or better results (GPT-6 Sol 9/9 held out). The floors stay at the first run's figures. A stored result more than 0.05 (agent) or 0.02 (extraction, matching) below these fails tests/test_eval_gate.py.",
+ "agent": {
+  "test-cc-claude-sonnet-5-5": {
+   "pass_rate": 1.0,
+   "outcome_accuracy": 1.0
+  },
+  "test-cx-gpt-6-sol": {
+   "pass_rate": 0.8889,
+   "outcome_accuracy": 0.8889
+  }
+ },
+ "extraction": {
+  "extraction-rules": 0.9796,
+  "extraction-rules+cc-claude-sonnet-5-5": 0.9962
+ },
+ "matching": {
+  "matching-scale0.1": {
+   "status_accuracy": 0.9535,
+   "findings_recall": 1.0
+  }
+ },
+ "attacks_known_failures": {}
+}

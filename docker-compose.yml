@@ -1,0 +1,128 @@
+# ProcureMind:  docker compose up --build
+#   UI  http://localhost:3300      API docs  http://localhost:8300/docs
+name: procuremind
+
+x-db-passwords: &db-passwords
+  PROCUREMIND_OWNER_PASSWORD: ${PROCUREMIND_OWNER_PASSWORD:-procuremind_owner}
+  PROCUREMIND_APP_PASSWORD: ${PROCUREMIND_APP_PASSWORD:-procuremind_app}
+
+x-backend-env: &backend-env
+  DATABASE_URL: postgresql+psycopg://procuremind_app:${PROCUREMIND_APP_PASSWORD:-procuremind_app}@pgbouncer:6432/procuremind
+  DATABASE_URL_OWNER: postgresql+psycopg://procuremind_owner:${PROCUREMIND_OWNER_PASSWORD:-procuremind_owner}@db:5432/procuremind
+  REDIS_URL: redis://redis:6379/0
+  FILES_DIR: /data/files
+  SECRET_KEY: ${SECRET_KEY:-local-demo-secret-change-me}
+  TRUSTED_PROXY: ${TRUSTED_PROXY:-true}
+  ALLOW_SIGNUP: ${ALLOW_SIGNUP:-true}
+  CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3300}
+  COOKIE_SECURE: ${COOKIE_SECURE:-false}
+  SEED_DEMO: ${SEED_DEMO:-true}
+  DEMO_SCALE: ${DEMO_SCALE:-0.25}
+  LLM_PROVIDER: ${LLM_PROVIDER:-stub}
+  LLM_MODEL: ${LLM_MODEL:-}
+  LLM_API_KEY: ${LLM_API_KEY:-}
+  LLM_BASE_URL: ${LLM_BASE_URL:-}
+  LLM_FALLBACK_MODEL: ${LLM_FALLBACK_MODEL:-}
+  LLM_PRICE_INPUT_PER_MTOK: ${LLM_PRICE_INPUT_PER_MTOK:-3.0}
+  LLM_PRICE_OUTPUT_PER_MTOK: ${LLM_PRICE_OUTPUT_PER_MTOK:-15.0}
+  ALLOW_PRIVATE_LLM_URLS: ${ALLOW_PRIVATE_LLM_URLS:-true}
+  RUN_MAX_STEPS: ${RUN_MAX_STEPS:-25}
+  RUN_MAX_TOKENS: ${RUN_MAX_TOKENS:-200000}
+  RUN_MAX_SECONDS: ${RUN_MAX_SECONDS:-300}
+  RUN_MAX_COST_USD: ${RUN_MAX_COST_USD:-1.00}
+  ORG_DAILY_COST_USD: ${ORG_DAILY_COST_USD:-20.00}
+  GLOBAL_DAILY_COST_USD: ${GLOBAL_DAILY_COST_USD:-200.00}
+  ORG_MAX_CONCURRENT_RUNS: ${ORG_MAX_CONCURRENT_RUNS:-5}
+  ORG_MAX_QUEUED_RUNS: ${ORG_MAX_QUEUED_RUNS:-15}
+  AUTO_INVESTIGATE: ${AUTO_INVESTIGATE:-false}
+  METRICS_TOKEN: ${METRICS_TOKEN:-}
+  OTEL_EXPORTER_OTLP_ENDPOINT: ${OTEL_EXPORTER_OTLP_ENDPOINT:-}
+  OTEL_EXPORTER_OTLP_HEADERS: ${OTEL_EXPORTER_OTLP_HEADERS:-}
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      <<: *db-passwords
+    command: ["postgres", "-c", "max_connections=200", "-c", "shared_buffers=512MB"]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./infra/postgres/init.sh:/docker-entrypoint-initdb.d/init.sh:ro
+    ports: ["127.0.0.1:55452:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U postgres -d procuremind"]
+      interval: 3s
+      retries: 30
+
+  pgbouncer:
+    build: ./infra/pgbouncer
+    environment:
+      <<: *db-passwords
+    ports: ["127.0.0.1:56452:6432"]
+    depends_on:
+      db: { condition: service_healthy }
+
+  redis:
+    image: redis:7-alpine
+    ports: ["127.0.0.1:56399:6379"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      retries: 30
+
+  migrate:   # applies migrations and, when SEED_DEMO=true, loads the demo data; then exits
+    build: { context: ./backend, target: app }
+    volumes: ["files:/data/files"]   # the demo documents it creates are read by the worker
+    command: ["python", "-m", "app.bootstrap"]
+    environment: *backend-env
+    depends_on:
+      db: { condition: service_healthy }
+      redis: { condition: service_healthy }
+
+  api:
+    build: { context: ./backend, target: app }
+    volumes: ["files:/data/files"]   # documents: written by api, read by worker
+    environment: *backend-env
+    extra_hosts: ["host.docker.internal:host-gateway"]   # reach a model gateway or Ollama on the host
+    ports: ["127.0.0.1:8300:8000"]   # API docs for the person running it; everyone else goes through web
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+      pgbouncer: { condition: service_started }
+      redis: { condition: service_healthy }
+
+  worker:   # scale out with:  docker compose up --scale worker=4
+    build: { context: ./backend, target: app }
+    volumes: ["files:/data/files"]   # documents: written by api, read by worker
+    command: ["python", "-m", "app.worker.run", "--concurrency", "${WORKER_CONCURRENCY:-4}"]
+    environment: *backend-env
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    stop_grace_period: 20s
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+      pgbouncer: { condition: service_started }
+      redis: { condition: service_healthy }
+
+  web:
+    build: ./frontend
+    ports: ["${WEB_BIND:-127.0.0.1}:3300:80"]   # the UI over plain HTTP; WEB_BIND=0.0.0.0 publishes it to the network (see .env.example)
+    depends_on: [api]
+
+  tests:   # tests that need system packages (OCR):  make test-ocr
+    profiles: ["test"]
+    build: { context: ./backend, target: test }
+    command: ["python", "-m", "pytest", "-q", "-m", "ocr"]
+    environment:
+      DATABASE_URL: postgresql+psycopg://procuremind_app:${PROCUREMIND_APP_PASSWORD:-procuremind_app}@pgbouncer:6432/procuremind_test
+      DATABASE_URL_OWNER: postgresql+psycopg://procuremind_owner:${PROCUREMIND_OWNER_PASSWORD:-procuremind_owner}@db:5432/procuremind_test
+      REDIS_URL: redis://redis:6379/1
+      FILES_DIR: /tmp/files
+    volumes: ["./backend/tests:/srv/tests:ro", "./backend/eval:/srv/eval"]   # evaluation results are written back
+    extra_hosts: ["host.docker.internal:host-gateway"]   # the model gateway on the host, for live tests
+    depends_on:
+      db: { condition: service_healthy }
+      redis: { condition: service_healthy }
+
+volumes:
+  pgdata:
+  files:

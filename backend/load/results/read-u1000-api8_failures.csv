@@ -1,0 +1,4 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+GET,GET /api/ap-approvals,LocustBadStatusCode(code=500),1,2026-11-14T14:47:36Z,2026-11-14T14:47:36Z
+GET,GET /api/orders/{id},LocustBadStatusCode(code=500),1,2026-11-14T14:47:54Z,2026-11-14T14:47:54Z
+GET,GET /api/invoices/{id}/match,LocustBadStatusCode(code=404),12,2026-11-14T14:46:50Z,2026-11-14T14:47:59Z

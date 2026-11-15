@@ -1,0 +1,81 @@
+{
+ "name": "matching-scale0.1",
+ "scale": 0.1,
+ "scans": true,
+ "at": "2026-11-14T16:52:30+00:00",
+ "documents": 43,
+ "status_accuracy": 0.9535,
+ "findings_precision": 0.7273,
+ "findings_recall": 1.0,
+ "per_code": {
+  "bank_changed": {
+   "tp": 1,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "duplicate_amount": {
+   "tp": 0,
+   "fp": 2,
+   "fn": 0,
+   "precision": 0.0,
+   "recall": null
+  },
+  "duplicate_number": {
+   "tp": 1,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "no_po": {
+   "tp": 2,
+   "fp": 1,
+   "fn": 0,
+   "precision": 0.6667,
+   "recall": 1.0
+  },
+  "price_over_tolerance": {
+   "tp": 1,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "quantity_over_received": {
+   "tp": 1,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "split_under_threshold": {
+   "tp": 2,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  }
+ },
+ "wrong_status": [
+  {
+   "document": "0-0001.pdf",
+   "expected": "pending_approval",
+   "got": "needs_review",
+   "document_status": "needs_review",
+   "codes": [],
+   "quality": "medium"
+  },
+  {
+   "document": "1-0006.pdf",
+   "expected": "pending_approval",
+   "got": "exception",
+   "document_status": "extracted",
+   "codes": [
+    "no_po"
+   ],
+   "quality": "medium"
+  }
+ ]
+}

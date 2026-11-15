@@ -1,0 +1,12 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+GET,GET /api/invoices/{id}/match,LocustBadStatusCode(code=503),3,2026-11-14T14:53:26Z,2026-11-14T14:53:32Z
+GET,GET /api/orders/{id},LocustBadStatusCode(code=503),2,2026-11-14T14:53:28Z,2026-11-14T14:53:29Z
+POST,POST /api/auth/login,LocustBadStatusCode(code=503),8,2026-11-14T14:52:49Z,2026-11-14T14:53:03Z
+GET,GET /api/ap-approvals,LocustBadStatusCode(code=503),3,2026-11-14T14:53:25Z,2026-11-14T14:53:31Z
+GET,GET /api/invoices,LocustBadStatusCode(code=503),22,2026-11-14T14:52:54Z,2026-11-14T14:53:35Z
+GET,GET /api/invoices/{id},LocustBadStatusCode(code=503),6,2026-11-14T14:53:19Z,2026-11-14T14:53:35Z
+GET,GET /api/vendors,LocustBadStatusCode(code=503),1,2026-11-14T14:53:28Z,2026-11-14T14:53:28Z
+GET,GET /api/auth/me,LocustBadStatusCode(code=503),1,2026-11-14T14:54:08Z,2026-11-14T14:54:08Z
+GET,GET /api/invoices/{id}/match,LocustBadStatusCode(code=404),1,2026-11-14T14:53:34Z,2026-11-14T14:53:34Z
+GET,GET /api/orders,LocustBadStatusCode(code=503),8,2026-11-14T14:53:04Z,2026-11-14T14:53:35Z
+GET,GET /api/exceptions,LocustBadStatusCode(code=503),3,2026-11-14T14:53:04Z,2026-11-14T14:53:32Z

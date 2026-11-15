@@ -1,0 +1,28 @@
+.env
+.env.local
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+node_modules/
+.next/
+out/
+.superpowers/
+test-results/
+playwright-report/
+**/e2e/.auth/
+frontend/tsconfig.tsbuildinfo
+
+# editor, assistant and tooling state
+.claude/
+.archify/
+.continuum/
+.cursor/
+.hallmark/
+.playwright-mcp/
+AGENTS.md
+CLAUDE.md
+
+# the test report published with the docs is kept
+!docs/test-results/

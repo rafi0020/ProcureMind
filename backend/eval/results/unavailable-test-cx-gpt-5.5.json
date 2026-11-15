@@ -1,0 +1,218 @@
+{
+ "name": "test-cx-gpt-5.5",
+ "model": "cx/gpt-5.5",
+ "split": "test",
+ "n": 9,
+ "at": "2026-11-14T13:59:54+00:00",
+ "metrics": {
+  "pass_rate": 0.0,
+  "outcome_accuracy": 0.0,
+  "cite_rate": 0.0,
+  "completed_rate": 0.0,
+  "unsupported_numbers_per_report": 0.0,
+  "mean_steps": 0,
+  "mean_cost_usd": 0.0,
+  "p50_latency_s": 91.9,
+  "p95_latency_s": 101.1
+ },
+ "by_kind": {
+  "price_over_tolerance": {
+   "n": 2,
+   "passed": 0
+  },
+  "quantity_over_received": {
+   "n": 1,
+   "passed": 0
+  },
+  "duplicate_number": {
+   "n": 1,
+   "passed": 0
+  },
+  "bank_changed": {
+   "n": 1,
+   "passed": 0
+  },
+  "no_po": {
+   "n": 1,
+   "passed": 0
+  },
+  "line_unmatched": {
+   "n": 1,
+   "passed": 0
+  },
+  "currency_mismatch": {
+   "n": 1,
+   "passed": 0
+  },
+  "split_under_threshold": {
+   "n": 1,
+   "passed": 0
+  }
+ },
+ "questions": [
+  {
+   "id": "price_over_tolerance-3",
+   "kind": "price_over_tolerance",
+   "outcome": null,
+   "outcome_ok": false,
+   "cited": false,
+   "passed": false,
+   "reason": "run ended failed",
+   "status": "failed",
+   "steps": 0,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "latency_s": 98.7,
+   "unsupported": 0,
+   "tool_errors": 0,
+   "run_id": "b599a4f8-b0c1-4596-8e01-a53f7727d5b9",
+   "summary": "The model call failed: The model is unavailable: Provider returned 503: {\"error\":{\"message\":\"[codex/gpt-5.5] [400]: {\\\"detail\\\":\\\"The 'gpt-5.5' model is not supported when using Codex with a ChatGPT account.\\\",\\\"error\\\":{\\\"type\\\":\\\"invalid_request_error\\\",\\\"code\\\":\\\"model_not_found\\\",\\\"message\\\":\\\"The 'gpt-5.5' model is not  (reset after 28m 23s)\"}}"
+  },
+  {
+   "id": "price_over_tolerance-6",
+   "kind": "price_over_tolerance",
+   "outcome": null,
+   "outcome_ok": false,
+   "cited": false,
+   "passed": false,
+   "reason": "run ended failed",
+   "status": "failed",
+   "steps": 0,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "latency_s": 88.2,
+   "unsupported": 0,
+   "tool_errors": 0,
+   "run_id": "e8c6f6e3-1c70-42b3-a85d-590d914bd9c2",
+   "summary": "The model call failed: The model is unavailable: Provider returned 503: {\"error\":{\"message\":\"[codex/gpt-5.5] [400]: {\\\"detail\\\":\\\"The 'gpt-5.5' model is not supported when using Codex with a ChatGPT account.\\\",\\\"error\\\":{\\\"type\\\":\\\"invalid_request_error\\\",\\\"code\\\":\\\"model_not_found\\\",\\\"message\\\":\\\"The 'gpt-5.5' model is not  (reset after 28m 34s)\"}}"
+  },
+  {
+   "id": "quantity_over_received-3",
+   "kind": "quantity_over_received",
+   "outcome": null,
+   "outcome_ok": false,
+   "cited": false,
+   "passed": false,
+   "reason": "run ended failed",
+   "status": "failed",
+   "steps": 0,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "latency_s": 91.9,
+   "unsupported": 0,
+   "tool_errors": 0,
+   "run_id": "c453b7ed-7841-4617-ae60-49b9eaf322bf",
+   "summary": "The model call failed: The model is unavailable: Provider returned 503: {\"error\":{\"message\":\"[codex/gpt-5.5] [400]: {\\\"detail\\\":\\\"The 'gpt-5.5' model is not supported when using Codex with a ChatGPT account.\\\",\\\"error\\\":{\\\"type\\\":\\\"invalid_request_error\\\",\\\"code\\\":\\\"model_not_found\\\",\\\"message\\\":\\\"The 'gpt-5.5' model is not  (reset after 28m 30s)\"}}"
+  },
+  {
+   "id": "duplicate_number-3",
+   "kind": "duplicate_number",
+   "outcome": null,
+   "outcome_ok": false,
+   "cited": false,
+   "passed": false,
+   "reason": "run ended failed",
+   "status": "failed",
+   "steps": 0,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "latency_s": 98.9,
+   "unsupported": 0,
+   "tool_errors": 0,
+   "run_id": "56b522e9-e6bf-4f0c-96a0-6e049b558bc5",
+   "summary": "The model call failed: The model is unavailable: Provider returned 503: {\"error\":{\"message\":\"[codex/gpt-5.5] [400]: {\\\"detail\\\":\\\"The 'gpt-5.5' model is not supported when using Codex with a ChatGPT account.\\\",\\\"error\\\":{\\\"type\\\":\\\"invalid_request_error\\\",\\\"code\\\":\\\"model_not_found\\\",\\\"message\\\":\\\"The 'gpt-5.5' model is not  (reset after 26m 55s)\"}}"
+  },
+  {
+   "id": "bank_changed-3",
+   "kind": "bank_changed",
+   "outcome": null,
+   "outcome_ok": false,
+   "cited": null,
+   "passed": false,
+   "reason": "run ended failed",
+   "status": "failed",
+   "steps": 0,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "latency_s": 91.2,
+   "unsupported": 0,
+   "tool_errors": 0,
+   "run_id": "f86af975-4ad2-46be-8229-e297325405cd",
+   "summary": "The model call failed: The model is unavailable: Provider returned 503: {\"error\":{\"message\":\"[codex/gpt-5.5] [400]: {\\\"detail\\\":\\\"The 'gpt-5.5' model is not supported when using Codex with a ChatGPT account.\\\",\\\"error\\\":{\\\"type\\\":\\\"invalid_request_error\\\",\\\"code\\\":\\\"model_not_found\\\",\\\"message\\\":\\\"The 'gpt-5.5' model is not  (reset after 26m 59s)\"}}"
+  },
+  {
+   "id": "no_po-3",
+   "kind": "no_po",
+   "outcome": null,
+   "outcome_ok": false,
+   "cited": null,
+   "passed": false,
+   "reason": "run ended failed",
+   "status": "failed",
+   "steps": 0,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "latency_s": 101.1,
+   "unsupported": 0,
+   "tool_errors": 0,
+   "run_id": "b6829798-5d23-48fd-8c44-e8c7aab340f1",
+   "summary": "The model call failed: The model is unavailable: Provider returned 503: {\"error\":{\"message\":\"[codex/gpt-5.5] [400]: {\\\"detail\\\":\\\"The 'gpt-5.5' model is not supported when using Codex with a ChatGPT account.\\\",\\\"error\\\":{\\\"type\\\":\\\"invalid_request_error\\\",\\\"code\\\":\\\"model_not_found\\\",\\\"message\\\":\\\"The 'gpt-5.5' model is not  (reset after 26m 42s)\"}}"
+  },
+  {
+   "id": "line_unmatched-3",
+   "kind": "line_unmatched",
+   "outcome": null,
+   "outcome_ok": false,
+   "cited": null,
+   "passed": false,
+   "reason": "run ended failed",
+   "status": "failed",
+   "steps": 0,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "latency_s": 77.4,
+   "unsupported": 0,
+   "tool_errors": 0,
+   "run_id": "d43fafa0-2160-4135-b245-76fda055b2d9",
+   "summary": "The model call failed: The model is unavailable: Provider returned 503: {\"error\":{\"message\":\"[codex/gpt-5.5] [400]: {\\\"detail\\\":\\\"The 'gpt-5.5' model is not supported when using Codex with a ChatGPT account.\\\",\\\"error\\\":{\\\"type\\\":\\\"invalid_request_error\\\",\\\"code\\\":\\\"model_not_found\\\",\\\"message\\\":\\\"The 'gpt-5.5' model is not  (reset after 25m 41s)\"}}"
+  },
+  {
+   "id": "currency_mismatch-3",
+   "kind": "currency_mismatch",
+   "outcome": null,
+   "outcome_ok": false,
+   "cited": null,
+   "passed": false,
+   "reason": "run ended failed",
+   "status": "failed",
+   "steps": 0,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "latency_s": 95.9,
+   "unsupported": 0,
+   "tool_errors": 0,
+   "run_id": "3100a1e1-5073-48be-9a1d-2417a3674709",
+   "summary": "The model call failed: The model is unavailable: Provider returned 503: {\"error\":{\"message\":\"[codex/gpt-5.5] [400]: {\\\"detail\\\":\\\"The 'gpt-5.5' model is not supported when using Codex with a ChatGPT account.\\\",\\\"error\\\":{\\\"type\\\":\\\"invalid_request_error\\\",\\\"code\\\":\\\"model_not_found\\\",\\\"message\\\":\\\"The 'gpt-5.5' model is not  (reset after 25m 19s)\"}}"
+  },
+  {
+   "id": "split_under_threshold-3",
+   "kind": "split_under_threshold",
+   "outcome": null,
+   "outcome_ok": false,
+   "cited": false,
+   "passed": false,
+   "reason": "run ended failed",
+   "status": "failed",
+   "steps": 0,
+   "tokens": 0,
+   "cost_usd": 0.0,
+   "latency_s": 83.4,
+   "unsupported": 0,
+   "tool_errors": 0,
+   "run_id": "0e3de932-0850-472e-a077-5ea28f568bad",
+   "summary": "The model call failed: The model is unavailable: Provider returned 503: {\"error\":{\"message\":\"[codex/gpt-5.5] [400]: {\\\"detail\\\":\\\"The 'gpt-5.5' model is not supported when using Codex with a ChatGPT account.\\\",\\\"error\\\":{\\\"type\\\":\\\"invalid_request_error\\\",\\\"code\\\":\\\"model_not_found\\\",\\\"message\\\":\\\"The 'gpt-5.5' model is not  (reset after 25m 19s)\"}}"
+  }
+ ],
+ "provider_unavailable": true,
+ "note": "Every call was refused by the gateway: the cx/gpt-5.5 route is not available on this account (\"model is not supported when using Codex with a ChatGPT account\"). No case reached the model, so this is not a score."
+}

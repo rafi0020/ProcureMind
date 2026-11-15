@@ -1,0 +1,64 @@
+[project]
+name = "procuremind"
+version = "1.0.0"
+description = "Accounts-payable automation with an exception-handling agent"
+requires-python = ">=3.13"
+dependencies = [
+  "fastapi",
+  "uvicorn[standard]",
+  "pydantic",
+  "pydantic-settings",
+  "sqlalchemy[asyncio]",
+  "psycopg[binary,pool]",
+  "alembic",
+  "redis",
+  "httpx",
+  "sqlglot",
+  "cryptography",
+  "prometheus-client",
+  "opentelemetry-sdk",
+  "opentelemetry-exporter-otlp-proto-http",
+  "opentelemetry-proto>=1.45.2",
+  "regex>=2026.11.9",
+  "jsonschema>=4.26.0",
+  "python-multipart>=0.0.33",
+  "pymupdf>=2.1",
+  "pytesseract>=0.3.13",
+  "pillow>=13.0.0",
+  "openpyxl>=3.1.5",
+  "reportlab>=5.1.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "ruff",
+    "locust",
+    "pyyaml>=6.0.3",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+asyncio_default_test_loop_scope = "session"
+testpaths = ["tests"]
+markers = ["live: needs a real LLM gateway (NINEROUTER_API_KEY)", "ocr: needs the tesseract binary (runs in the test image: make test-ocr)"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py313"
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "S", "ASYNC"]
+ignore = ["S101", "B008", "E501"]  # line length is left to the formatter
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S", "ASYNC", "F811"]
+"seed/*" = ["S311", "S608"]
+"alembic/*" = ["S608"]
+"app/finance/alerts_eval.py" = ["S608"]  # SQL assembled from constants in this file only
+"app/investigator/tools.py" = ["S608"]  # WHERE clauses are chosen from fixed strings; values are always bound
+"eval/*" = ["S"]
+"load/*" = ["S"]
+[tool.ruff.lint.isort]
+known-third-party = ["alembic"]
+known-first-party = ["app", "seed", "eval"]

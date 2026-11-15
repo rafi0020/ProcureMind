@@ -1,0 +1,216 @@
+{
+ "name": "test-cx-gpt-6-sol",
+ "model": "cx/gpt-6-sol",
+ "split": "test",
+ "n": 9,
+ "at": "2026-11-14T17:17:43+00:00",
+ "metrics": {
+  "pass_rate": 1.0,
+  "outcome_accuracy": 1.0,
+  "cite_rate": 1.0,
+  "completed_rate": 1.0,
+  "unsupported_numbers_per_report": 0.222,
+  "mean_steps": 11.78,
+  "mean_cost_usd": 0.1398,
+  "p50_latency_s": 38.6,
+  "p95_latency_s": 47.1
+ },
+ "by_kind": {
+  "price_over_tolerance": {
+   "n": 2,
+   "passed": 2
+  },
+  "quantity_over_received": {
+   "n": 1,
+   "passed": 1
+  },
+  "duplicate_number": {
+   "n": 1,
+   "passed": 1
+  },
+  "bank_changed": {
+   "n": 1,
+   "passed": 1
+  },
+  "no_po": {
+   "n": 1,
+   "passed": 1
+  },
+  "line_unmatched": {
+   "n": 1,
+   "passed": 1
+  },
+  "currency_mismatch": {
+   "n": 1,
+   "passed": 1
+  },
+  "split_under_threshold": {
+   "n": 1,
+   "passed": 1
+  }
+ },
+ "questions": [
+  {
+   "id": "price_over_tolerance-3",
+   "kind": "price_over_tolerance",
+   "outcome": "request_credit_note",
+   "outcome_ok": true,
+   "cited": true,
+   "passed": true,
+   "reason": "recommended request_credit_note, stated the 5.00% price variance",
+   "status": "completed",
+   "steps": 11,
+   "tokens": 39921,
+   "cost_usd": 0.128883,
+   "latency_s": 35.9,
+   "unsupported": 0,
+   "tool_errors": 0,
+   "run_id": "f37ca44f-0e6f-4e55-8be1-81739d77f762",
+   "summary": "Recommend request_credit_note. GL-120 billed USD 23.1 per unit versus unchanged PO price USD 22; USD 11 excess, with 5% variance above 2% tolerance. Ordered, received, invoiced quantities each 10; bank account matches vendor file. Based on PO, receipt, invoice comparison, vendor history. Person decides; no payment or change made."
+  },
+  {
+   "id": "price_over_tolerance-6",
+   "kind": "price_over_tolerance",
+   "outcome": "request_credit_note",
+   "outcome_ok": true,
+   "cited": true,
+   "passed": true,
+   "reason": "recommended request_credit_note, stated the 12.00% price variance",
+   "status": "completed",
+   "steps": 11,
+   "tokens": 40025,
+   "cost_usd": 0.129747,
+   "latency_s": 37.5,
+   "unsupported": 0,
+   "tool_errors": 0,
+   "run_id": "c3f7f496-272d-4db9-9571-42ee3101b223",
+   "summary": "Request credit note. Supplier billed USD 28 per unit; unchanged PO sets USD 25. Excess USD 30 before tax; 12% variance exceeds 2% tolerance. Ordered, received, billed quantities match. Bank account matches account on file. No agreed higher price shown. Person decides; request credit plus applicable tax adjustment."
+  },
+  {
+   "id": "quantity_over_received-3",
+   "kind": "quantity_over_received",
+   "outcome": "hold",
+   "outcome_ok": true,
+   "cited": true,
+   "passed": true,
+   "reason": "recommended hold, stated the 9 received",
+   "status": "completed",
+   "steps": 11,
+   "tokens": 39801,
+   "cost_usd": 0.128439,
+   "latency_s": 40.9,
+   "unsupported": 0,
+   "tool_errors": 0,
+   "run_id": "de1d4d9f-797c-409d-885a-9220ae43f8dc",
+   "summary": "Hold. Invoice bills 12 units; PO orders 12, receipt records 9. Full delivery unconfirmed. Unit price and bank account match records. Confirm remaining goods receipt before person decides."
+  },
+  {
+   "id": "duplicate_number-3",
+   "kind": "duplicate_number",
+   "outcome": "reject_duplicate",
+   "outcome_ok": true,
+   "cited": true,
+   "passed": true,
+   "reason": "recommended reject_duplicate, stated the total 352.00 already invoiced",
+   "status": "completed",
+   "steps": 12,
+   "tokens": 44257,
+   "cost_usd": 0.143631,
+   "latency_s": 38.6,
+   "unsupported": 0,
+   "tool_errors": 1,
+   "run_id": "32219689-1ecc-43a6-9f21-818b4b0356f3",
+   "summary": "Reject duplicate. Current No. 42 flagged as previously received INV-0042; vendor history shows prior invoice approved, same vendor and USD 352.0 total. PO/receipt comparison finds no line mismatch; bank account matches account on file. Prior invoice lines unavailable, so exact line identity unconfirmed. Person to review recommendation."
+  },
+  {
+   "id": "bank_changed-3",
+   "kind": "bank_changed",
+   "outcome": "hold",
+   "outcome_ok": true,
+   "cited": null,
+   "passed": true,
+   "reason": "recommended hold",
+   "status": "completed",
+   "steps": 11,
+   "tokens": 39598,
+   "cost_usd": 0.127662,
+   "latency_s": 34.8,
+   "unsupported": 0,
+   "tool_errors": 0,
+   "run_id": "417d1aac-31e6-4224-9caf-f7738e687ee1",
+   "summary": "Hold. Invoice payment account GB16NEWB00000000000016 differs from active vendor account US16EVAL0000000016; matching suffix in exception finding does not prove account match. Independently verify payment instructions through trusted vendor contact. PO, receipt, invoice lines match; no resolved bank_changed precedent."
+  },
+  {
+   "id": "no_po-3",
+   "kind": "no_po",
+   "outcome": "hold",
+   "outcome_ok": true,
+   "cited": null,
+   "passed": true,
+   "reason": "recommended hold",
+   "status": "completed",
+   "steps": 11,
+   "tokens": 37673,
+   "cost_usd": 0.120915,
+   "latency_s": 34.5,
+   "unsupported": 0,
+   "tool_errors": 1,
+   "run_id": "f40dcdf4-13cd-4ce4-b0b3-ee0749da8967",
+   "summary": "Hold. Invoice INV-E0020 cites PO-X0020, but purchase order not found; no receipt recorded against it. Confirm purchase order and goods receipt before matching. Bank account matches account on file. Based on invoice, purchase-order lookup, receipts, line comparison, and vendor history; no resolved no_po precedent."
+  },
+  {
+   "id": "line_unmatched-3",
+   "kind": "line_unmatched",
+   "outcome": "request_corrected_invoice",
+   "outcome_ok": true,
+   "cited": null,
+   "passed": true,
+   "reason": "recommended request_corrected_invoice",
+   "status": "completed",
+   "steps": 12,
+   "tokens": 44013,
+   "cost_usd": 0.144819,
+   "latency_s": 42.1,
+   "unsupported": 2,
+   "tool_errors": 1,
+   "run_id": "a96dd8f0-3418-46ac-b74b-a31d19abad6b",
+   "summary": "Request corrected invoice. Invoice bills safety gloves; purchase order and goods receipt show floor cleaner. Item mismatch blocks match. Supplier must confirm goods supplied and correct invoice or purchase-order reference. Records do not show gloves received. Bank account matches account on file. Person reviews recommendation; nothing approved or paid."
+  },
+  {
+   "id": "currency_mismatch-3",
+   "kind": "currency_mismatch",
+   "outcome": "hold",
+   "outcome_ok": true,
+   "cited": null,
+   "passed": true,
+   "reason": "recommended hold",
+   "status": "completed",
+   "steps": 13,
+   "tokens": 47886,
+   "cost_usd": 0.156318,
+   "latency_s": 45.7,
+   "unsupported": 0,
+   "tool_errors": 1,
+   "run_id": "a1442fed-5308-458b-9b5b-ad179ff359c4",
+   "summary": "Hold. Invoice INV-E0026 states CAD; currency-mismatch finding identifies PO-E0026 as USD. Item GL-120 and quantity 10 match invoice, PO, and receipt; numeric unit price 46 matches invoice and PO, but different currencies leave charge unverified. Bank account matches active vendor record. No agreed conversion or CAD billing authorization shown. Confirm billing currency before processing; person dec"
+  },
+  {
+   "id": "split_under_threshold-3",
+   "kind": "split_under_threshold",
+   "outcome": "escalate",
+   "outcome_ok": true,
+   "cited": true,
+   "passed": true,
+   "reason": "recommended escalate, stated the 1,000 approval limit",
+   "status": "completed",
+   "steps": 14,
+   "tokens": 54922,
+   "cost_usd": 0.17823,
+   "latency_s": 47.1,
+   "unsupported": 0,
+   "tool_errors": 1,
+   "run_id": "3dca8e84-f1ed-4c41-b479-f6ca0987a07a",
+   "summary": "Escalate. Three separately numbered invoices, each 959.97 USD, dated 2026-11-06, 2026-11-08, 2026-11-10, raise possible split beneath 1000 USD approval limit. Current invoice matches PO price and received quantity; repeated amount alone does not prove duplicate. Bank account matches account on file. Senior reviewer check approval context; intent unproven. Based on exception findings, invoice, PO, "
+  }
+ ]
+}
