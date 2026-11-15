@@ -38,9 +38,9 @@ An accounts-payable system with an exception-handling agent. It reads supplier i
 
 ## Architecture
 
-![ProcureMind AI architecture](docs/architecture.png)
+![ProcureMind AI architecture](docs/architecture.gif)
 
-[Interactive diagram](docs/architecture.html) (open the file in a browser) · [Architecture notes](docs/ARCHITECTURE.md) · [Database schema](docs/DATABASE.md) · [API reference](docs/API.md)
+[Interactive diagram](https://rafi0020.github.io/ProcureMind/docs/architecture.html) · [Architecture notes](docs/ARCHITECTURE.md) · [Database schema](docs/DATABASE.md) · [API reference](docs/API.md)
 
 | Layer | Technology |
 |---|---|
@@ -338,7 +338,7 @@ Known limits: no independent security audit has been carried out, no antivirus s
 | Document | What is in it |
 |---|---|
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Components, request paths, the document pipeline, approvals, the agent loop, design decisions and their costs |
-| [docs/architecture.html](docs/architecture.html) | The interactive architecture diagram; open the file in a browser. Generated from [docs/architecture.diagram.json](docs/architecture.diagram.json) |
+| [docs/architecture.html](https://rafi0020.github.io/ProcureMind/docs/architecture.html) | The interactive architecture diagram. Generated from [docs/architecture.diagram.json](docs/architecture.diagram.json) |
 | [docs/PROMPTS.md](docs/PROMPTS.md) | Every prompt sent to a model, its guardrails and how its output is checked |
 | [docs/AI_DISCLOSURE.md](docs/AI_DISCLOSURE.md) | The AI tools used to build the project, what they produced, and how it was verified |
 | [docs/LEARNING.md](docs/LEARNING.md) | A guided read of the code in the order a document travels, with the tests that show each behaviour |
