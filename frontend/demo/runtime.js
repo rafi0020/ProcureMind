@@ -99,6 +99,7 @@
     for (var i = 0; i < scopes.length; i++) {
       var bin = scopes[i].bin || {};
       var hit = bin[req.key] || bin[req.path];
+      if (typeof hit === "string") hit = (fixtures.bin || {})[hit];
       if (hit) {
         var id = (currentUser() || "anon") + req.key;
         if (!blobs[id]) {
@@ -258,7 +259,7 @@
     var req = parse(String(value));
     if (!req) { assign(value); return; }
     assign("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
-    ready.then(function () { var blob = binary(req); if (blob) assign(URL.createObjectURL(blob)); });
+    ready.then(function () { var blob = binary(req); if (blob) assign(URL.createObjectURL(blob)); else console.warn("demo: not recorded", "image", req.key); });
   }
   Element.prototype.setAttribute = function (name, value) {
     if (this.tagName === "IMG" && String(name).toLowerCase() === "src") return swapImage(this, value, setAttr.bind(this, "src"));
@@ -363,6 +364,11 @@
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", watchLinks); else watchLinks();
 
+  /* Voice cannot be replayed (nothing recognises speech), so a demo of a voice product keeps the microphone off. */
+  if (cfg.noMic && navigator.mediaDevices) {
+    navigator.mediaDevices.getUserMedia = function () { return Promise.reject(new DOMException("The microphone is off in the demo.", "NotAllowedError")); };
+  }
+
   /* ---- a small, dismissible note so nobody mistakes the demo for a live deployment ---- */
   function note() {
     if (document.getElementById("demo-note")) return;
@@ -371,7 +377,7 @@
     box.setAttribute("role", "note");
     box.style.cssText = "position:fixed;left:12px;bottom:12px;z-index:2147483000;max-width:min(360px,calc(100vw - 24px));font:12px/1.45 system-ui,sans-serif;background:#0f172a;color:#e2e8f0;border:1px solid #334155;border-radius:10px;padding:9px 30px 9px 12px;box-shadow:0 6px 24px rgba(0,0,0,.35)";
     var text = document.createElement("span");
-    text.textContent = (cfg.title || "This") + " demo replays data recorded from the running system. Changes are not saved. ";
+    text.textContent = (cfg.title || "This") + " demo replays data recorded from the running system. Changes are not saved. " + (cfg.extra ? cfg.extra + " " : "");
     var link = document.createElement("a");
     link.href = cfg.repo || "#"; link.target = "_blank"; link.rel = "noopener";
     link.textContent = "Source on GitHub";

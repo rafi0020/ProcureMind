@@ -15,7 +15,7 @@ fs.copyFileSync(path.join(here, "runtime.js"), path.join(out, "demo", "runtime.j
 fs.copyFileSync(path.join(here, "fixtures.json"), path.join(out, "demo", "fixtures.json"));
 
 const tag =
-  `<script>window.__DEMO__=${JSON.stringify({ base: cfg.base, title: cfg.title, repo: cfg.repo })};</script>` +
+  `<script>window.__DEMO__=${JSON.stringify({ base: cfg.base, title: cfg.title, repo: cfg.repo, extra: cfg.extra, noMic: cfg.noMic })};</script>` +
   `<script src="${cfg.base}/demo/runtime.js"></script>`;
 
 let pages = 0;
