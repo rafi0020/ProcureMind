@@ -4,7 +4,7 @@ import { LogOut, Menu, Moon, Sun } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
-import { api, useApi, useMe } from "@/lib/api";
+import { BASE, api, useApi, useMe } from "@/lib/api";
 import type { Role } from "@/lib/types";
 import { Loading, ToastProvider } from "./ui";
 
@@ -58,7 +58,7 @@ export function Shell({ children }: { children: ReactNode }) {
   if (isLoading || !user) return <Loading rows={6} label="Signing in" />;
   const signOut = async () => {
     await api("/api/auth/logout", { method: "POST" }).catch(() => {});
-    window.location.href = "/login/";
+    window.location.href = `${BASE}/login/`;
   };
   return (
     <ToastProvider>

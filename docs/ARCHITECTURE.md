@@ -1,6 +1,6 @@
 # Architecture
 
-The diagram is generated from [`architecture.diagram.json`](architecture.diagram.json); an [interactive version](https://rafi0020.github.io/ProcureMind/docs/architecture.html) is also available.
+The diagram is generated from [`architecture.diagram.json`](architecture.diagram.json); an [interactive version](https://rafi0020.github.io/ProcureMind/diagram/) is also available.
 
 ## Overview
 

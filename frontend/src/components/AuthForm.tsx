@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
-import { api, ApiError, setCsrf } from "@/lib/api";
+import { BASE, api, ApiError, setCsrf } from "@/lib/api";
 import { Mark } from "./Shell";
 
 // The demo accounts of this installation (the seed in backend/seed). Public demo credentials on a local app.
@@ -69,7 +69,7 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
       const body = mode === "login" ? { email: form.email, password: form.password } : form;
       const result = await api<{ csrf_token: string }>(`/api/auth/${mode}`, { method: "POST", json: body });
       setCsrf(result.csrf_token);
-      window.location.href = "/inbox/";
+      window.location.href = `${BASE}/inbox/`;
     } catch (e) {
       setError(e instanceof ApiError ? e.message : "Something went wrong.");
       setBusy(false);
